@@ -1,0 +1,44 @@
+<template>
+    <section class="dashboard">
+        <div class="hero">
+            <div>
+                <p class="eyebrow">SWIFT SHIP TRACKER</p>
+                <h1>Shipment command center</h1>
+                <p class="subtitle">Manage bookings, tracking and delivery information from one Salesforce-powered workspace.</p>
+            </div>
+            <div class="badge">Salesforce + LWC</div>
+        </div>
+
+        <div class="stats">
+            <article><span>Total</span><strong>{total}</strong></article>
+            <article><span>Booked</span><strong>{booked}</strong></article>
+            <article><span>In Transit</span><strong>{inTransit}</strong></article>
+            <article><span>Delivered</span><strong>{delivered}</strong></article>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">
+                <h2>Recent Shipments</h2>
+                <button onclick={loadShipments}>Refresh</button>
+            </div>
+            <template if:true={shipments}>
+                <div class="table">
+                    <div class="row header">
+                        <span>Shipment</span><span>Route</span><span>Status</span><span>Expected</span>
+                    </div>
+                    <template for:each={shipments} for:item="item">
+                        <div class="row" key={item.Id}>
+                            <span>{item.Name}</span>
+                            <span>{item.Source__c} → {item.Destination__c}</span>
+                            <span class="status">{item.Status__c}</span>
+                            <span>{item.Expected_Delivery__c}</span>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template if:false={shipments}>
+                <p class="empty">No shipments yet. Create your first shipment.</p>
+            </template>
+        </div>
+    </section>
+</template>

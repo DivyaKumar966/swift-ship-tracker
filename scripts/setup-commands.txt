@@ -1,0 +1,8 @@
+REM Run these from the project root in VS Code Terminal
+
+sf --version
+sf org login web --alias SwiftShip --set-default
+sf org list
+sf project deploy start --source-dir force-app
+sf apex run test --tests SwiftShipControllerTest --result-format human --wait 10
+sf org open

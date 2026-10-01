@@ -1,0 +1,8 @@
+:host{display:block}
+.card{background:white;padding:24px;border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+.heading p{font-size:12px;letter-spacing:2px;color:#FF6F61;font-weight:800;margin:0}
+.heading h2{margin:5px 0 18px;color:#10201E}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+button{background:#0E4D47;color:white;border:0;border-radius:8px;padding:11px 18px;font-weight:700;cursor:pointer}
+.message{margin-top:14px;color:#0E4D47;font-weight:600}
+@media(max-width:650px){.grid{grid-template-columns:1fr}}

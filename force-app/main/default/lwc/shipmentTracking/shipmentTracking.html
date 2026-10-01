@@ -1,0 +1,27 @@
+<template>
+    <section class="card">
+        <p class="eyebrow">TRACK SHIPMENT</p>
+        <h2>Where is your parcel?</h2>
+        <div class="search">
+            <lightning-input label="Shipment Number" variant="label-hidden" placeholder="Example: SHP-00001" value={shipmentNumber} onchange={handleInput}></lightning-input>
+            <button onclick={track}>Track</button>
+        </div>
+
+        <template if:true={loading}>
+            <p>Searching Salesforce...</p>
+        </template>
+
+        <template if:true={shipment}>
+            <div class="result">
+                <div><span>Shipment</span><strong>{shipment.Name}</strong></div>
+                <div><span>Route</span><strong>{shipment.Source__c} → {shipment.Destination__c}</strong></div>
+                <div><span>Status</span><strong>{shipment.Status__c}</strong></div>
+                <div><span>Expected Delivery</span><strong>{shipment.Expected_Delivery__c}</strong></div>
+            </div>
+        </template>
+
+        <template if:true={message}>
+            <p class="message">{message}</p>
+        </template>
+    </section>
+</template>

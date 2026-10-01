@@ -1,0 +1,25 @@
+<template>
+    <section class="card">
+        <div class="heading">
+            <p>BOOK SHIPMENT</p>
+            <h2>Create a new shipment</h2>
+        </div>
+
+        <div class="grid">
+            <lightning-input label="Customer Record Id" value={customerId} onchange={handleChange} data-field="customerId"></lightning-input>
+            <lightning-input label="Source" value={source} onchange={handleChange} data-field="source" required></lightning-input>
+            <lightning-input label="Destination" value={destination} onchange={handleChange} data-field="destination" required></lightning-input>
+            <lightning-input type="number" label="Package Weight (kg)" value={weight} onchange={handleChange} data-field="weight" required></lightning-input>
+            <lightning-input type="date" label="Expected Delivery" value={expectedDelivery} onchange={handleChange} data-field="expectedDelivery"></lightning-input>
+        </div>
+
+        <button onclick={bookShipment} disabled={loading}>
+            <template if:true={loading}>Booking...</template>
+            <template if:false={loading}>Book Shipment</template>
+        </button>
+
+        <template if:true={message}>
+            <p class="message">{message}</p>
+        </template>
+    </section>
+</template>

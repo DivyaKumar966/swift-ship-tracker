@@ -1,0 +1,21 @@
+<template>
+    <section class="assistant">
+        <div class="top">
+            <div><span class="dot"></span><strong>Swift Ship Assistant</strong></div>
+            <small>Agentforce-ready</small>
+        </div>
+
+        <div class="messages">
+            <div class="bot">Hi! I can help with shipment booking, tracking and delivery preferences.</div>
+            <template for:each={messages} for:item="msg">
+                <div key={msg.id} class={msg.className}>{msg.text}</div>
+            </template>
+        </div>
+
+        <div class="composer">
+            <input value={draft} oninput={handleInput} onkeydown={handleKey} placeholder="Ask about a shipment..." />
+            <button onclick={send}>Send</button>
+        </div>
+        <p class="hint">Connect this component to your Agentforce topic/action after enabling Agentforce in the Salesforce org.</p>
+    </section>
+</template>
